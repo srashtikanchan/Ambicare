@@ -1,0 +1,104 @@
+- Database of Ambicare
+
+1. client -
+id, name, email, contact, password
+
+2. Driver -
+id, name, email, contact, password
+
+3. Admin -
+id, name, email, contact password
+ 
+4. ambulance -
+aid, did, ambulanceNumber, Fees 
+
+5. Bookings -
+id, cid(Client Id), did(Driver Id), ambulanceNumber, pickupL, dropL, Fees
+
+6. Checkout - 
+id, cid, cardName, cardNumber, expMonth, expYear, cvv, Fees
+
+7. p_d_location -
+id, cid, pickupL, dropL
+
+8. acceptedRequests -
+id, clientName, did, pickupL, dropL, Fees
+
+
+
+- mysql code to define all the table
+for admin -
+    create table admin (
+        id int(12) Primary key Auto_increment,
+        name varchar(255) not null,
+        email varchar(255) Unique key not null,
+        contact varchar(255) not null,
+        password varchar(255) not null
+    );
+
+for client -
+    create table client (
+        id int(12) Primary key Auto_increment,
+        name varchar(255) not null,
+        email varchar(255) Unique key not null,
+        contact varchar(255) not null,
+        password varchar(255) not null
+    );
+
+for driver -
+    create table driver (
+        id int(12) Primary key Auto_increment,
+        name varchar(255) not null,
+        email varchar(255) Unique key not null,
+        contact varchar(255) not null,
+        password varchar(255) not null
+    );
+
+for Bookings -
+    create table bookings (
+        id int(12) Primary key Auto_increment,
+        cid int(12),
+        did int(12),
+        ambulanceNumber varchar(255),
+        pickupL varchar(60) not null,
+        dropL varchar (60) not null,
+        Fees int(12)
+    );
+
+for location -
+    create table p_d_location (
+        id int(12) Primary key Auto_increment,
+        cid int(12),
+        pickupL varchar(60) not null,
+        dropL varchar (60) not null
+    );
+
+for ambulance -
+    create table ambulance (
+        aid int(12) Primary Key Auto_increment,
+        did int(12),
+        Fees int(12),
+        ambulanceNumber varchar(255)
+    )
+for checkout -
+    create table checkout (
+        id int(12) Primary Key Auto_increment,
+        cid int(12),
+        cardName varchar(255),
+        cardNumber bigint(255),
+        expMonth varchar(255),
+        expYear varchar(255),
+        cvv int(5),
+        Fees int(12)
+    );
+for accepted Ruquests - 
+    create table acceptedRequests (
+        id int(12) Primary Key Auto_increment,
+        clientName varchar(255),
+        did int(12),
+        pickupL varchar(60),
+        dropL varchar(60),
+        Fees int(12)
+    );
+
+    
